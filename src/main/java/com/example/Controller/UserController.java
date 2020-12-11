@@ -1,14 +1,10 @@
 package com.example.Controller;
- 
-import com.example.entity.User;
+
+import com.alibaba.fastjson.JSONObject;
 import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
- 
+import org.springframework.web.bind.annotation.*;
+
 /**
  * @Author:wjup
  * @Date: 2018/9/26 0026
@@ -24,7 +20,14 @@ public class UserController {
  
     @RequestMapping("getUser/{id}")
     @ResponseBody
-    public String GetUser(@PathVariable int id){
-        return userService.Sel(id).toString();
+    public JSONObject GetUser(@PathVariable int id){
+        JSONObject jsonParam ;
+        jsonParam = (JSONObject) JSONObject.toJSON(userService.Sel(id));
+        System.out.println(jsonParam);
+        return jsonParam;
     }
+
+
+
+
 }

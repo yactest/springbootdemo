@@ -17,4 +17,10 @@ public class UserService {
     public User Sel(int id){
         return userMapper.Sel(id);
     }
+    public User findByUsername(User user){
+        return userMapper.findByUsername(user.getUserName());
+    }
+    public User findUserById(String userId) {
+        return userMapper.findUserById(userId);
+    }
 }
